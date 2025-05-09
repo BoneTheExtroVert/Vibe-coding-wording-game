@@ -1,57 +1,68 @@
 body {
     font-family: Arial, sans-serif;
     display: flex;
-    flex-direction: column; /* Stack game container and other content if any */
+    flex-direction: column;
     align-items: center;
+    justify-content: center; /* Center game vertically */
+    min-height: 100vh; /* Ensure body takes full viewport height */
     margin: 0;
-    padding: 15px;
+    padding: 10px; /* Reduced padding */
     background-color: #f4f4f4;
     color: #333;
+    overflow: hidden; /* Prevent scrollbars on body */
 }
 
 .game-container {
     background-color: #fff;
-    padding: 20px;
+    padding: 10px; /* Further reduced padding */
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0,0,0,0.15);
-    width: fit-content;
+    /* width: fit-content; Remove fit-content to allow shrinking */
+    display: flex; /* Added flex */
+    flex-direction: column; /* Stack main sections vertically */
+    align-items: center; /* Center sections horizontally */
+    max-width: 98vw; /* Use viewport width */
+    max-height: 98vh; /* Use viewport height */
+    overflow-y: auto; /* Allow internal scroll if content still overflows, but main page won't scroll */
 }
 
 header {
     display: flex;
     flex-direction: column; /* Stack top-row and scores vertically */
     align-items: center; /* Center the two rows horizontally */
-    padding: 10px 20px;
+    padding: 8px 15px; /* Reduced padding */
     background-color: #f0f0f0;
     border-bottom: 1px solid #ccc;
-    margin-bottom: 20px;
-    gap: 5px; /* Optional: small gap between the two lines */
+    margin-bottom: 5px; /* Further reduced margin */
+    gap: 5px; 
+    width: 100%; /* Ensure header takes full width of game-container */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .header-top-row {
     display: flex;
     justify-content: space-between; /* Title left, button right */
     align-items: center;
-    width: 100%; /* Make this row take full width of header padding */
-    /* padding: 0 10px; /* Optional: if more specific padding needed for this row */
+    width: 100%;
+    /* padding: 0 10px; /* Removed, handled by header padding */
 }
 
 header h1 {
     margin: 0;
-    /* font-size can be adjusted if needed */
+    font-size: 1.6em; /* Further reduced */
 }
 
 .scores {
     display: flex;
-    justify-content: center; /* Center the score items on their line */
-    gap: 15px; /* Spacing between score items */
-    flex-wrap: wrap; /* Allow items to wrap on narrow screens */
-    max-width: 600px; /* Prevent excessive spreading */
+    justify-content: center; 
+    gap: 8px; /* Further reduced gap */
+    flex-wrap: wrap; 
+    max-width: 100%; /* Allow scores to take full width if needed */
 }
 
 .score-board, .high-score-board {
-    font-size: 1.1em;
-    padding: 5px 10px;
+    font-size: 0.9em; /* Further reduced font size */
+    padding: 4px 6px; /* Further adjusted padding */
     background-color: #e9e9e9;
     border-radius: 5px;
 }
@@ -66,55 +77,58 @@ header h1 {
 .board-and-scored-words-container {
     display: flex;
     justify-content: center;
-    gap: 30px; /* Space between board and right side column */
-    margin-bottom: 20px;
-    align-items: flex-start; /* Align tops */
+    gap: 10px; /* Further reduced gap */
+    margin-bottom: 10px; /* Further reduced margin */
+    align-items: flex-start; 
+    width: 100%; /* Allow this container to use available width */
 }
 
 .right-side-column {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Space between scored words area and row clear area */
+    gap: 10px; /* Reduced gap */
+    flex-shrink: 0; /* Prevent this column from shrinking too much */
 }
 
 #main-board-area {
-    margin-bottom: 0; /* Remove bottom margin as it's handled by the container */
+    margin-bottom: 0; 
     /* display: flex; Keep default */
     /* justify-content: center; Keep default */
     border-radius: 8px; /* Rounded corners for the board area itself */
     overflow: hidden; /* Ensures inner grid respects the border radius */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add some depth */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    /* flex-grow: 1; Allow board area to take available space if needed, might be too much */
 }
 
 #scored-words-area {
     border: 1px solid #ccc;
     background-color: #f9f9f9;
-    padding: 10px 15px;
+    padding: 6px 10px; /* Further adjusted padding */
     border-radius: 8px;
-    width: 150px; /* Adjust width as needed */
-    height: 160px; /* Increased height to accommodate title, 3 words, and button */
-    overflow-y: auto; /* Scrollbar will appear if content *still* exceeds this new height */
-    display: flex; /* Enable flexbox */
-    flex-direction: column; /* Stack items vertically */
+    width: 140px; 
+    height: 120px; /* Further reduced height */
+    overflow-y: auto; 
+    display: flex; 
+    flex-direction: column; 
 }
 
 #board-actions-area {
     border: 1px solid #ccc;
     background-color: #f9f9f9;
-    padding: 12px;
+    padding: 8px; /* Further adjusted padding */
     border-radius: 8px;
-    width: 150px; /* Match width with scored words area */
+    width: 140px; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px; /* Add space between buttons */
+    gap: 6px; /* Further reduced gap */
 }
 
 #scored-words-area h2 {
     text-align: center;
     margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.2em;
+    margin-bottom: 8px; /* Reduced margin */
+    font-size: 1.1em; /* Reduced font size */
     color: #333;
 }
 
@@ -125,9 +139,9 @@ header h1 {
 }
 
 #scored-words-list li {
-    padding: 3px 0;
+    padding: 2px 0; /* Reduced padding */
     border-bottom: 1px dashed #eee;
-    font-size: 1em;
+    font-size: 0.9em; /* Reduced font size */
     color: #444;
     text-align: center; /* Center the text */
 }
@@ -143,13 +157,13 @@ header h1 {
 
 /* Adjusted for main game board cells specifically */
 #main-game-board .grid-cell { /* Targeting cells inside #main-game-board */
-    width: 35px; /* Keep existing size or adjust as needed */
-    height: 35px; /* Keep existing size or adjust as needed */
-    border: 1px solid #bbb; /* Darker border for better definition */
+    width: 28px; /* Further reduced size */
+    height: 28px; /* Further reduced size */
+    border: 1px solid #bbb; 
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2em; /* Slightly larger font */
+    font-size: 1.1em; /* Slightly reduced */
     font-weight: bold;
     background-color: #f8f8f8; /* Slightly off-white background */
     color: #333; /* Ensure good contrast for letters */
@@ -161,27 +175,28 @@ header h1 {
 
 .player-choices-area {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 5px; /* Further reduced margin */
 }
 
 .player-choices-area h2 {
-    margin-top: 0; /* Remove default top margin if needed */
-    margin-bottom: 10px;
+    margin-top: 0; 
+    margin-bottom: 8px; /* Reduced margin */
+    font-size: 1.1em; /* Added to control size if needed */
 }
 
 .choosable-blocks-container {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align containers to the top */
-    gap: 15px;
-    margin-top: 10px;
+    align-items: flex-start; 
+    gap: 8px; /* Further reduced gap */
+    margin-top: 0px; /* Further reduced margin */
 }
 
 .choice-block-display {
     cursor: grab !important;
     border: 2px solid transparent;
-    width: 90px;  /* Slightly increased to accommodate potential padding/shadow */
-    height: 90px; /* Slightly increased */
+    width: 70px;  /* Further reduced size */
+    height: 70px; /* Further reduced size */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -198,10 +213,10 @@ header h1 {
 
 /* Styling for the inner grid cells within choosable blocks */
 .choice-block-display .block-inner-grid .grid-cell {
-    width: 25px; /* Or dynamically set if needed, but fixed can work here */
-    height: 25px;
-    border: 1px solid #b0b8c0; /* Clearer border */
-    font-size: 0.95em;
+    width: 20px; /* Further reduced size */
+    height: 20px; /* Further reduced size */
+    border: 1px solid #b0b8c0; 
+    font-size: 0.9em; /* Reduced font size */
     font-weight: bold;
     color: #2c3e50; /* Darker letter color */
     background-color: #ffffff; /* White background for cells */
@@ -214,10 +229,11 @@ header h1 {
 
 .controls-area {
     display: flex;
-    flex-direction: column; /* Stack Rotate and Discard buttons vertically */
-    gap: 10px; /* Space between Rotate and Discard buttons */
-    justify-content: center; /* Center buttons vertically if container has height */
-    margin-top: 45px; /* Nudge the control area down by 30px */
+    flex-direction: row; 
+    gap: 8px; /* Further reduced gap */
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 0;
 }
 
 .placement-info-area p {
@@ -235,13 +251,13 @@ input[type="number"] {
 }
 
 button {
-    padding: 10px 15px;
+    padding: 6px 10px; /* Further reduced padding */
     border: none;
     border-radius: 5px;
     background-color: #007bff;
     color: white;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 0.9em; /* Applied general font size reduction */
     transition: background-color 0.2s ease;
 }
 
@@ -265,8 +281,8 @@ button:hover {
 
 .message-area {
     text-align: center;
-    margin-bottom: 15px;
-    min-height: 1.5em; /* Ensure space for messages */
+    margin-bottom: 10px; /* Further reduced margin */
+    min-height: 1.2em; /* Further ensure space for messages */
 }
 
 #game-message {
@@ -278,8 +294,8 @@ button:hover {
 }
 
 #restart-button {
-    padding: 10px 15px;
-    font-size: 1em;
+    padding: 8px 12px; /* Reduced padding */
+    font-size: 0.9em; /* Reduced font size */
     background-color: #ffc107; /* Yellow */
     color: black;
     border: none;
@@ -301,7 +317,7 @@ button:disabled {
 /* Styles for the new rotate button if needed, or it can use default button styles */
 #new-rotate-button {
     background-color: #17a2b8; /* Teal / Info color */
-    padding: 10px 15px;
+    padding: 8px 12px; /* Reduced padding, font-size will be 0.9em from general button */
 }
 
 #new-rotate-button:hover {
@@ -422,10 +438,9 @@ body.dragging-active * {
 
 /* Style for the clear row button */
 #clear-row-button, #clear-column-button {
-    width: 100%; /* Make buttons use full width */
-    margin: 0; /* Remove any lingering margins */
-    padding: 10px 0; /* Slightly larger padding */
-    font-weight: bold; /* Make text bolder */
+    background-color: #dc3545; 
+    padding: 8px 10px;
+    font-size: 0.9em;
 }
 
 #clear-row-button {
@@ -451,11 +466,11 @@ body.dragging-active * {
 /* New wrapper for choices and their controls */
 .choices-and-controls-wrapper {
     display: flex;
-    align-items: flex-start; /* Align items to the top */
-    justify-content: center; /* Center the group on the page */
-    gap: 20px; /* Space between choices area and controls area */
-    margin-top: 20px;
-    margin-bottom: 20px;
+    flex-direction: column; /* Stack choices then controls */
+    align-items: center; /* Center them horizontally */
+    gap: 8px; /* Further reduced gap */
+    margin-top: 5px; /* Further reduced margin */
+    width: 100%; /* Allow wrapper to use available width */
 }
 
 /* Styling for main board cells when a block is selected and mouse hovers over a cell */
@@ -533,12 +548,9 @@ body.dragging-active * {
 
 /* Style for swap letters button */
 #swap-letters-button {
-    background-color: #17a2b8; /* Teal/Info color */
-    color: white;
-    width: 100%; /* Make button use full width */
-    margin: 0; /* Remove any lingering margins */
-    padding: 10px 0; /* Slightly larger padding */
-    font-weight: bold; /* Make text bolder */
+    background-color: #17a2b8;
+    padding: 8px 10px;
+    font-size: 0.9em;
 }
 
 #swap-letters-button:hover {
@@ -578,4 +590,152 @@ body.dragging-active * {
 
 .letter-swapping {
     animation: swapAnimation 0.5s ease-out;
+}
+
+/* --- Responsive Styles for Mobile --- */
+@media (max-width: 600px) {
+    body {
+        padding: 5px; /* Minimal padding for body */
+        -webkit-text-size-adjust: 100%; /* Prevent font scaling on iOS */
+        text-size-adjust: 100%; /* Prevent font scaling */
+    }
+
+    .game-container {
+        padding: 5px; /* Minimal padding for game container */
+        max-width: 100vw; /* Allow it to take full screen width */
+        max-height: 100vh; /* Allow it to take full screen height if needed */
+        overflow-y: auto; /* Still allow scroll within container if absolutely necessary */
+    }
+
+    header {
+        padding: 5px 10px;
+        margin-bottom: 8px;
+    }
+
+    header h1 {
+        font-size: 1.3em; /* Smaller title */
+    }
+
+    .scores {
+        gap: 5px;
+        flex-direction: column; /* Stack scores */
+        align-items: center;
+    }
+    
+    .score-board, .high-score-board {
+        font-size: 0.85em;
+        padding: 3px 5px;
+    }
+
+    .board-and-scored-words-container {
+        flex-direction: column; /* Stack board and right column */
+        align-items: center; /* Center them when stacked */
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+
+    #main-board-area {
+        max-width: 95vw; /* Ensure board area fits */
+    }
+
+    #main-game-board .grid-cell {
+        width: 24px; /* Even smaller cells for mobile */
+        height: 24px;
+        font-size: 1em;
+    }
+
+    .right-side-column {
+        width: 80%; /* Allow right column to take some width */
+        align-items: center; /* Center its content */
+        gap: 8px;
+    }
+
+    #scored-words-area,
+    #board-actions-area {
+        width: 100%; /* Make these take full width of right-side-column */
+        max-width: 280px; /* But not too wide */
+        padding: 8px;
+    }
+    
+    #scored-words-area {
+         height: auto; /* Auto height based on content */
+         min-height: 100px; /* Minimum height */
+    }
+
+    #scored-words-area h2 {
+        font-size: 1em;
+        margin-bottom: 5px;
+    }
+
+    #scored-words-list li {
+        font-size: 0.8em;
+    }
+    
+    #board-actions-area button {
+        width: 90%; /* Make buttons wide */
+        padding: 8px 5px; /* Adjust padding */
+        font-size: 0.85em;
+    }
+
+    .player-choices-area h2 {
+        font-size: 1em;
+        margin-bottom: 5px;
+    }
+
+    .choosable-blocks-container {
+        gap: 5px; /* Tighter gap */
+        /* Consider flex-direction: column if they still don't fit well */
+    }
+
+    .choice-block-display {
+        width: 60px; /* Smaller choice blocks */
+        height: 60px;
+        padding: 3px;
+    }
+
+    .choice-block-display .block-inner-grid .grid-cell {
+        width: 18px;
+        height: 18px;
+        font-size: 0.8em;
+    }
+
+    .controls-area {
+        flex-direction: row; /* Keep as row if possible */
+        gap: 8px;
+        flex-wrap: wrap; /* Allow buttons to wrap if needed */
+        justify-content: center;
+    }
+    
+    .controls-area button {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+
+    button {
+        font-size: 0.9em; /* General button font size reduction */
+        padding: 8px 10px; /* Adjust general button padding */
+    }
+
+    #restart-button,
+    #new-rotate-button {
+        font-size: 0.9em;
+        padding: 8px 10px;
+    }
+    
+    .message-area {
+        margin-bottom: 8px;
+        min-height: 1em;
+        font-size: 0.9em;
+    }
+
+    /* Modal adjustments for mobile */
+    .modal-content {
+        width: 90%;
+        margin: 10% auto;
+        padding: 15px;
+    }
+
+    #all-words-modal-list {
+        max-height: 200px; /* Shorter list for mobile modal */
+    }
 } 
