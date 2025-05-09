@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Constants ---
     const MAIN_BOARD_WIDTH = 9;
     const MAIN_BOARD_HEIGHT = 9;
-    const TWL_FILE_NAME = "wordlist.txt";
+    const TWL_FILE_NAME = "wordist.txt";
     const HIGH_SCORE_KEY = 'wordGridHighScore_v2'; // New key for new game version
 
     // Block shape templates (as masks, letters will be random)
@@ -931,11 +931,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function findWordsOnMainBoard(board) {
-        console.log("FIND_WORDS: Entered findWordsOnMainBoard. validWords size:", validWords.size, "Is 'DAD' in validWords at this point?", validWords.has("DAD"));
-        console.log("FIND_WORDS: Current board state:", JSON.parse(JSON.stringify(board)));
         const foundWordsDetails = [];
         if (validWords.size === 0) {
-            console.log("FIND_WORDS: Exiting early because validWords is empty.");
             return foundWordsDetails;
         }
         // Scan Rows
